@@ -10,11 +10,12 @@ from src._discriminator import Discriminator
 from src._dataset import get_celeba_dataloader
 from src._utils import weights_init, init_csv
 
-def train_dcgan(data_root, out_dir,model_dir, image_size=64, batch_size=128,
+def train_dcgan(data_root, out_dir, model_dir, image_size=64, batch_size=128,
                 nz=100, ngf=64, ndf=64, epochs=50, lr=2e-4, beta1=0.5):
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     os.makedirs(out_dir, exist_ok=True)
+    os.makedirs(model_dir, exist_ok=True)
 
     # Data loader
     loader = get_celeba_dataloader(data_root, image_size, batch_size)
